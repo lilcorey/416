@@ -36,6 +36,7 @@ private:
   FrameGenerator frameGen;
   bool makeVideo;
   bool hudToggle;
+  const unsigned int numSprites;
 
   void draw() const;
   void update(Uint32);

@@ -1,6 +1,8 @@
 #include <iostream>
 #include <sstream>
 #include <string>
+#include <algorithm>
+#include <random>
 #include <iomanip>
 #include "sprite.h"
 #include "multisprite.h"
@@ -8,6 +10,13 @@
 #include "player.h"
 #include "gamedata.h"
 #include "engine.h"
+
+class SpriteLess {
+public:
+  bool operator()(const Drawable* lhs, const Drawable* rhs) const {
+    return lhs->getScale() < rhs->getScale();
+  }
+};
 //#include "hud.h"
 //#include "frameGenerator.h"
 //http://more-sky.com/group/2d-wallpaper/
@@ -33,29 +42,54 @@ Engine::Engine() :
   currentSprite(-1),
   frameGen(),
   makeVideo( false ),
-  hudToggle( false )
+  hudToggle( false ),
+  numSprites(Gamedata::getInstance().getXmlInt("ball/numSprites"))
 {
-  //Drawable* guy = new Player("guy");
+  constexpr float u = 1.0f; //Mean size
+  constexpr float d = 0.5f; //Std deviation
+
+  std::random_device rd;
+  std::mt19937 mt(rd());
+  std::normal_distribution<float> dist(u,d);
+
   sprites.push_back(guy);
-  //sprites.push_back( new Player("guy"));
   sprites.push_back( new TwoWaySprite("doge"));
-  for(int i=0; i<5; i++){
-    sprites.push_back( new Sprite("ball") );
+
+  for ( unsigned int i = 0; i < numSprites; ++i ) {
+    auto* s = new Sprite("ball");
+    float scale = dist(mt);
+    while(scale < 0.1f) scale = dist(mt);
+    s->setScale(scale);
+    s->setVelocityX( (s->getVelocityX())*(scale) );
+    s->setVelocityY( (s->getVelocityY())*(scale) );
+    sprites.push_back(s);
   }
+  std::vector<Drawable*>::iterator ptr = sprites.begin();
+  ++ptr;
+  ++ptr;
+  sort(ptr, sprites.end(), SpriteLess());
+
   switchSprite();
-  //switchSprite();
   std::cout << "Loading complete" << std::endl;
 }
 
 void Engine::draw() const {
   sky.draw();
+  for ( unsigned int i = 2; i < numSprites/2; ++i ) {
+    sprites[i]->draw();
+  }
   grass.draw();
+
+  for ( unsigned int i = numSprites/2; i < numSprites; ++i ) {
+    sprites[i]->draw();
+  }
+  //for(auto* s : sprites) s->draw();
+  sprites[0]->draw();
+  sprites[1]->draw();
+  if(hudToggle || clock.getTicks() < 3850) hud.updateHUD();
 
   io.writeText(Gamedata::getInstance().getXmlStr("screenTitle"),
     10, viewport.getviewHeight()-35);
-
-  for(auto* s : sprites) s->draw();
-  if(hudToggle || clock.getTicks() < 3850) hud.updateHUD();
 
   viewport.draw();
   SDL_RenderPresent(renderer);

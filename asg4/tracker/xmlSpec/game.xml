@@ -47,7 +47,7 @@
   <size>16</size>
   <xcord>15</xcord>
   <ycord>50</ycord>
-  <width>165</width>
+  <width>175</width>
   <height>125</height>
 </hudfont>
 
@@ -96,6 +96,7 @@
   <speedX>-175</speedX>
   <speedY>-175</speedY>
   <transparency>true</transparency>
+  <numSprites>20</numSprites>
 </ball>
 
 <greenorb>

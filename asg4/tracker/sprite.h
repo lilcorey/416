@@ -14,12 +14,16 @@ public:
   virtual void draw() const;
   virtual void update(Uint32 ticks);
 
+  inline float getScale()const{ return scale; }
+  void  setScale(float s){ scale = s; }
+
 private:
   const Frame * frame;
   int worldWidth;
   int worldHeight;
   int frameWidth;
   int frameHeight;
+  float scale;
   int getDistance(const Sprite*) const;
   Vector2f makeVelocity(int, int) const;
 };

@@ -5,16 +5,16 @@
 #include <string>
 #include "vector2f.h"
 #include "frame.h"
- 
+
 // Drawable is an Abstract Base Class (ABC) that
 // specifies the methods that derived classes may
 // and must have.
 class Drawable {
 public:
-  Drawable(const std::string& n, const Vector2f& pos, const Vector2f& vel): 
+  Drawable(const std::string& n, const Vector2f& pos, const Vector2f& vel):
     name(n), position(pos), velocity(vel) {}
 
-  Drawable(const Drawable& s) : 
+  Drawable(const Drawable& s) :
     name(s.name), position(s.position), velocity(s.velocity)
     { }
 
@@ -26,6 +26,8 @@ public:
   const std::string& getName() const { return name; }
   void setName(const std::string& n) { name = n;    }
 
+  virtual float getScale() const { return 0; }
+  
   virtual const Frame* getFrame() const = 0;
 
   float getX() const  { return position[0]; }
