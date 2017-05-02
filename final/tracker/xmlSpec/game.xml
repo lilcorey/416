@@ -1,0 +1,152 @@
+<?xml version = "1.0"?>
+<GameData>
+<!-- screenTitle is also used to identify you and your animation.
+     So make sure to include your name as part of the screenTitle -->
+<screenTitle>Doge Zombies | Survive...</screenTitle>
+<maxStringSize>50</maxStringSize>
+
+<frameCapOn>true</frameCapOn>
+<period>17</period>
+
+<frameMax>200</frameMax>
+<username>cedelma</username>
+
+<view>
+  <width>854</width>
+  <height>480</height>
+</view>
+
+<world>
+  <width>1560</width>
+  <height>720</height>
+</world>
+
+<grass>
+  <file>images/grass_dark.png</file>
+  <factor>1</factor>
+  <transparency>false</transparency>
+</grass>
+
+<sky>
+  <file>images/back_mtn.png</file>
+  <factor>5</factor>
+  <transparency>false</transparency>
+</sky>
+
+<font name="font">
+  <file>fonts/arial.ttf</file>
+  <size>16</size>
+  <red>255</red>
+  <green>255</green>
+  <blue>255</blue>
+  <alpha>0</alpha>
+</font>
+
+<hudfont>
+  <file>fonts/arial.ttf</file>
+  <size>16</size>
+  <xcord>15</xcord>
+  <ycord>50</ycord>
+  <width>175</width>
+  <height>175</height>
+</hudfont>
+
+<guy>
+  <file>images/guyLR.png</file>
+  <startLoc x="120" y="340"/>
+  <frames>16</frames>
+  <frameInterval>70</frameInterval>
+  <speedX>-250</speedX>
+  <speedY>200</speedY>
+  <runSpeed>250</runSpeed>
+  <bullet>ball</bullet>
+  <chunk>
+    <size>9</size>
+    <distance>70</distance>
+  </chunk>
+  <transparency>true</transparency>
+</guy>
+
+<guyStand>
+  <file>images/guyStand.png</file>
+  <startLoc x="120" y="340"/>
+  <frames>4</frames>
+  <frameInterval>70</frameInterval>
+  <speedX>-250</speedX>
+  <speedY>200</speedY>
+  <runSpeed>250</runSpeed>
+  <transparency>true</transparency>
+</guyStand>
+
+<doge>
+  <file>images/dogeLRcrop.png</file>
+  <startLoc x="420" y="340"/>
+  <frames>16</frames>
+  <frameInterval>70</frameInterval>
+  <speedX>10</speedX>
+  <speedY>200</speedY>
+  <transparency>true</transparency>
+  <numEnemy>5</numEnemy>
+  <chunk>
+    <size>9</size>
+    <distance>70</distance>
+  </chunk>
+</doge>
+
+<star>
+  <file>images/yellowstar32.png</file>
+  <startLoc x="20" y="20"/>
+  <speedX>-175</speedX>
+  <speedY>-175</speedY>
+  <transparency>true</transparency>
+</star>
+
+<ball>
+  <file>images/ball.png</file>
+  <startLoc x="20" y="20"/>
+  <speedX>100</speedX>
+  <speedY>100</speedY>
+  <transparency>true</transparency>
+  <numSprites>20</numSprites>
+  <chunk>
+    <size>9</size>
+    <distance>100</distance>
+  </chunk>
+  <strategy>rectangular</strategy>
+  <interval>300</interval>
+  <distance>300</distance>
+</ball>
+
+<flap>
+  <file>images/flap.png</file>
+  <startLoc x="20" y="20"/>
+  <speedX>100</speedX>
+  <speedY>100</speedY>
+  <transparency>true</transparency>
+  <numSprites>20</numSprites>
+  <chunk>
+    <size>9</size>
+    <distance>100</distance>
+  </chunk>
+  <strategy>rectangular</strategy>
+  <interval>300</interval>
+  <distance>300</distance>
+</flap>
+
+<flapFlip>
+  <file>images/flapFlip.png</file>
+  <startLoc x="20" y="20"/>
+  <speedX>100</speedX>
+  <speedY>100</speedY>
+  <transparency>true</transparency>
+  <numSprites>20</numSprites>
+  <chunk>
+    <size>9</size>
+    <distance>100</distance>
+  </chunk>
+  <strategy>rectangular</strategy>
+  <interval>300</interval>
+  <distance>300</distance>
+</flapFlip>
+
+</GameData>
